@@ -1,0 +1,163 @@
+Excellent choice! Switching to the Adafruit Feather ESP32 V2 simplifies your build dramatically. This board includes built-in LiPo battery charging, 3.3V logic, and USB-C, which eliminates the need for a separate charger and voltage regulator.
+
+⸻
+
+🧰 FoxLAP GPS Lap Timer - Simplified BOM
+
+Optimized for Efficiency, Performance, and Assembly
+(Now using Feather ESP32 V2 with built-in battery charging)
+
+Qty	Component	Description	Product Link
+1	ESP32 Board	Adafruit Feather ESP32 V2 with USB-C & LiPo charging	Adafruit 5400
+1	GNSS Module	Ultimate GPS Breakout – 66 channel / 10 Hz	Adafruit 746
+1	OLED Display	2.42” 128x64 SPI Monochrome OLED	Adafruit 2719
+1	MicroSD Breakout	SPI MicroSD breakout for data logging	Adafruit 254
+
+
+
+⸻
+
+🔋 Battery + Charging (Simplified)
+
+Qty	Component	Description	Product Link
+1	Li-Ion Battery	3.7V 2200mAh Lithium Polymer Battery	Adafruit 1781
+1	Slide Switch	Inline power control (connected to EN pin or battery line)	Adafruit 805
+
+Note: Charging is handled automatically by the Feather ESP32 V2 over USB-C. Just plug in to charge and run.
+
+⸻
+
+⏺ Input Controls
+
+Qty	Component	Description	Product Link
+4	Tactile Push Buttons	6mm momentary switches (x4)	Adafruit 367
+2	10KΩ Resistors	Pull-up resistors for buttons	Adafruit 2784
+4	1KΩ Resistors	Series resistors or debouncing	Adafruit 2782
+
+
+
+⸻
+
+🧱 Enclosure + Assembly
+
+Qty	Component	Description	Source
+1	3D Printed Case	STL for main housing	FoxLAP Case STL
+1	3D Printed Mount	STL for mounting system	FoxLAP Mount STL
+-	Wires / Jumpers	22–26 AWG flexible hookup wire	Adafruit / Amazon
+-	Heat Shrink / Screws	Optional for cable cleanup and mounting	Hardware store
+
+
+
+⸻
+
+✅ Benefits of the Feather ESP32 V2 Upgrade:
+	•	USB-C with built-in LiPo charging and protection
+	•	3.3V regulated power rail onboard
+	•	One board = fewer wires, fewer connections, and less assembly time
+	•	More space in enclosure and cleaner cable routing
+	•	Easy firmware upload and serial monitor with built-in USB-C
+
+⸻
+
+# FoxLAP DIY GPS Lap Timer  
+**Built with Adafruit Feather ESP32 V2 – Optimized for Efficiency, Performance & Assembly**
+
+This is a DIY open-source GPS lap timer designed for track day enthusiasts and data nerds. With a compact footprint, built-in battery charging, high-speed GPS logging, and SD data capture, this project gives you timing accuracy without expensive hardware.
+
+---
+
+## Features
+
+- Fast 10Hz GPS for precise lap timing
+- OLED screen for real-time lap display
+- MicroSD logging for full post-session analysis
+- Rechargeable 3.7V LiPo battery w/ USB-C charging
+- Compact and 3D printable housing
+- Easily hackable with CircuitPython or Arduino
+
+---
+
+## Bill of Materials (Adafruit)
+
+### Core Components
+
+| Qty | Item | Description | Link |
+|-----|------|-------------|------|
+| 1 | **[Feather ESP32 V2](https://www.adafruit.com/product/5400)** | WiFi + BLE microcontroller with built-in USB-C & LiPo charging | Adafruit #5400 |
+| 1 | **[Ultimate GPS Breakout](https://www.adafruit.com/product/746)** | 66-channel, 10Hz GPS module | Adafruit #746 |
+| 1 | **[2.42" OLED Display](https://www.adafruit.com/product/2719)** | 128x64 SPI monochrome OLED | Adafruit #2719 |
+| 1 | **[MicroSD Card Breakout](https://www.adafruit.com/product/254)** | SPI MicroSD for logging | Adafruit #254 |
+
+---
+
+### Power System (Rechargeable)
+
+| Qty | Item | Description | Link |
+|-----|------|-------------|------|
+| 1 | **[Li-Ion Battery – 2200mAh](https://www.adafruit.com/product/1781)** | 3.7V rechargeable LiPo | Adafruit #1781 |
+| 1 | **[Slide Switch](https://www.adafruit.com/product/805)** | On/off switch (optional inline with EN pin) | Adafruit #805 |
+
+> **Note**: Charging is built into the Feather ESP32 V2 via USB-C. No extra charging board needed!
+
+---
+
+### Inputs (Buttons)
+
+| Qty | Item | Description | Link |
+|-----|------|-------------|------|
+| 4 | **[6mm Tactile Buttons](https://www.adafruit.com/product/367)** | Momentary push buttons | Adafruit #367 |
+| 2 | **[10KΩ Resistors](https://www.adafruit.com/product/2784)** | Pull-ups for button GPIOs | Adafruit #2784 |
+| 4 | **[1KΩ Resistors](https://www.adafruit.com/product/2782)** | Series or debounce resistors | Adafruit #2782 |
+
+---
+
+### Enclosure & Build Materials
+
+| Qty | Item | Description | Link |
+|-----|------|-------------|------|
+| 1 | **[3D Printed Case](https://foxlap.com/wp-content/uploads/2023/12/FoxLAP.DIY-case.STL)** | Printable housing STL | FoxLAP |
+| 1 | **[3D Printed Mount](https://foxlap.com/wp-content/uploads/2023/12/FoxLAP.mount.STL)** | Printable base mount STL | FoxLAP |
+| – | **Hookup Wire** | 22–26 AWG silicone wire | Adafruit / Amazon |
+| – | **Heat Shrink / Screws** | Mounting & cleanup supplies | Hardware store |
+
+---
+
+## Wiring Overview
+
+- Feather ESP32 V2 to GPS: UART TX/RX  
+- OLED via SPI (SCK, MOSI, DC, CS, RST)  
+- SD via SPI (shared bus with OLED, separate CS)  
+- Buttons to GPIOs with pull-up resistors  
+- Battery plugs into Feather JST connector (auto-charging)  
+- Switch optionally connected to Feather EN for hard power cutoff
+
+---
+
+## Powering On / Charging
+
+1. Plug in USB-C to charge the battery and/or upload firmware
+2. Disconnect USB to run fully on battery
+3. Toggle switch to power on/off (optional but recommended)
+
+---
+
+## Optional Upgrades
+
+- Add BLE lap beacon triggers using Feather BLE capabilities
+- Add G-sensor via I2C or analog input
+- Add NeoPixel strip or ring for lap/impact indication
+
+---
+
+## License
+
+Open-source under MIT license. Customize it, improve it, and race with it.
+
+---
+
+## Inspired by:
+
+- [FoxLAP DIY GPS Timer](https://foxlap.com/tutorials/diy-build-your-foxlap-device/)
+- [Adafruit Feather Ecosystem](https://www.adafruit.com/feather)
+
+---

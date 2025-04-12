@@ -59,125 +59,118 @@ Qty	Component	Description	Source
 
 ⸻
 
-# FoxLAP DIY GPS Lap Timer  
-**Built with Adafruit Feather ESP32 V2 – Optimized for Efficiency, Performance & Assembly**
+🔌 2. Assemble the Hardware
 
-This is a DIY open-source GPS lap timer designed for track day enthusiasts and data nerds. With a compact footprint, built-in battery charging, high-speed GPS logging, and SD data capture, this project gives you timing accuracy without expensive hardware.
+Wiring Overview:
+	•	GPS Module:
+	•	Connect GPS TX to ESP32 RX (e.g., GPIO16).
+	•	Connect GPS RX to ESP32 TX (e.g., GPIO17).
+	•	Power the GPS module with 3.3V and GND.
+	•	OLED Display (SPI):
+	•	Connect SCK to ESP32 SCK (e.g., GPIO18).
+	•	Connect MOSI to ESP32 MOSI (e.g., GPIO23).
+	•	Connect DC, CS, and RST to available GPIOs (e.g., GPIO27, GPIO5, GPIO33).
+	•	Power the display with 3.3V and GND.
+	•	MicroSD Card Breakout (SPI):
+	•	Share SCK and MOSI lines with the OLED display.
+	•	Connect CS to a separate GPIO (e.g., GPIO32).
+	•	Power the SD card breakout with 3.3V and GND.
+	•	Buttons:
+	•	Connect one side of each button to a GPIO (e.g., GPIO12–GPIO15).
+	•	Connect the other side to GND.
+	•	Use 10KΩ pull-up resistors between each GPIO and 3.3V.
+	•	Optionally, add 1KΩ series resistors for debouncing.
+	•	Power System:
+	•	Connect the LiPo battery to the Feather’s JST connector.
+	•	Optionally, wire the slide switch between the EN pin and GND for power control.
 
----
-
-## Features
-
-- Fast 10Hz GPS for precise lap timing
-- OLED screen for real-time lap display
-- MicroSD logging for full post-session analysis
-- Rechargeable 3.7V LiPo battery w/ USB-C charging
-- Compact and 3D printable housing
-- Easily hackable with CircuitPython or Arduino
-
----
-
-Here’s the formatted message you can use for a GitHub repo:
-
-⸻
-
-FoxLAP DIY GPS Lap Timer
-
-Built with Adafruit Feather ESP32 V2 – Optimized for Efficiency, Performance & Assembly
-
-This is a DIY open-source GPS lap timer designed for track day enthusiasts and data nerds. With a compact footprint, built-in battery charging, high-speed GPS logging, and SD data capture, this project gives you timing accuracy without expensive hardware.
-
-⸻
-
-Features
-	•	Fast 10Hz GPS for precise lap timing
-	•	OLED screen for real-time lap display
-	•	MicroSD logging for full post-session analysis
-	•	Rechargeable 3.7V LiPo battery w/ USB-C charging
-	•	Compact and 3D printable housing
-	•	Easily hackable with CircuitPython or Arduino
+Assembly Tips:
+	•	Use heat shrink tubing to insulate exposed wires.
+	•	Secure components inside the 3D printed case using screws or adhesive.
+	•	Ensure all connections are solid to withstand vibrations during use.
 
 ⸻
 
-Bill of Materials (Adafruit)
+💻 3. Set Up the Software Environment
 
-Core Components
+Install Arduino IDE:
+	1.	Download and install the Arduino IDE.
 
-Qty	Item	Description	Link
-1	Feather ESP32 V2	WiFi + BLE microcontroller with built-in USB-C & LiPo charging	Adafruit #5400
-1	Ultimate GPS Breakout	66-channel, 10Hz GPS module	Adafruit #746
-1	2.42” OLED Display	128x64 SPI monochrome OLED	Adafruit #2719
-1	MicroSD Card Breakout	SPI MicroSD for logging	Adafruit #254
+Configure ESP32 Board Support:
+	1.	Open Arduino IDE.
+	2.	Go to File > Preferences.
+	3.	In the “Additional Board Manager URLs” field, add:
 
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 
+4.	Click “OK”.
 
-⸻
+Install ESP32 Board Package:
+	1.	Go to Tools > Board > Boards Manager.
+	2.	Search for “esp32” and install the latest version.
 
-Power System (Rechargeable)
-
-Qty	Item	Description	Link
-1	Li-Ion Battery – 2200mAh	3.7V rechargeable LiPo	Adafruit #1781
-1	Slide Switch	On/off switch (optional inline with EN pin)	Adafruit #805
-
-Note: Charging is built into the Feather ESP32 V2 via USB-C. No extra charging board needed!
-
-⸻
-
-Inputs (Buttons)
-
-Qty	Item	Description	Link
-4	6mm Tactile Buttons	Momentary push buttons	Adafruit #367
-2	10KΩ Resistors	Pull-ups for button GPIOs	Adafruit #2784
-4	1KΩ Resistors	Series or debounce resistors	Adafruit #2782
-
-
+Select the Board and Port:
+	1.	Go to Tools > Board and select “Adafruit Feather ESP32 V2”.
+	2.	Connect your Feather ESP32 V2 via USB-C.
+	3.	Go to Tools > Port and select the appropriate COM port.
 
 ⸻
 
-Enclosure & Build Materials
+🧠 4. Program the Device
 
-Qty	Item	Description	Link
-1	3D Printed Case	Printable housing STL	FoxLAP
-1	3D Printed Mount	Printable base mount STL	FoxLAP
-–	Hookup Wire	22–26 AWG silicone wire	Adafruit / Amazon
-–	Heat Shrink / Screws	Mounting & cleanup supplies	Hardware store
+Install Required Libraries:
+	1.	Go to Sketch > Include Library > Manage Libraries.
+	2.	Install the following libraries:
+	•	Adafruit GPS Library
+	•	Adafruit SSD1306
+	•	Adafruit GFX Library
+	•	SD
+	•	SPI
 
+Upload Sample Code:
+	1.	Open a new sketch in Arduino IDE.
+	2.	Copy and paste the following sample code:
 
+// Sample code to initialize GPS, OLED, and SD card
+// Replace with actual implementation as needed
 
-⸻
+#include <Adafruit_GPS.h>
+#include <Adafruit_SSD1306.h>
+#include <SD.h>
+#include <SPI.h>
 
-Wiring Overview
-	•	Feather ESP32 V2 to GPS: UART TX/RX
-	•	OLED via SPI (SCK, MOSI, DC, CS, RST)
-	•	SD via SPI (shared bus with OLED, separate CS)
-	•	Buttons to GPIOs with pull-up resistors
-	•	Battery plugs into Feather JST connector (auto-charging)
-	•	Switch optionally connected to Feather EN for hard power cutoff
+// Define pins and initialize peripherals here
 
-⸻
+void setup() {
+  // Initialize Serial, GPS, OLED, SD card
+}
 
-Powering On / Charging
-	1.	Plug in USB-C to charge the battery and/or upload firmware
-	2.	Disconnect USB to run fully on battery
-	3.	Toggle switch to power on/off (optional but recommended)
+void loop() {
+  // Read GPS data
+  // Display on OLED
+  // Log to SD card
+}
 
-⸻
-
-Optional Upgrades
-	•	Add BLE lap beacon triggers using Feather BLE capabilities
-	•	Add G-sensor via I2C or analog input
-	•	Add NeoPixel strip or ring for lap/impact indication
-
-⸻
-
-License
-
-Open-source under MIT license. Customize it, improve it, and race with it.
+3.	Customize the code to implement lap timing functionality.
+	4.	Click the “Upload” button to program the ESP32.
 
 ⸻
 
-Inspired by:
-	•	FoxLAP DIY GPS Timer
-	•	Adafruit Feather Ecosystem
+🔋 5. Power and Test the Device
+
+Charging the Battery:
+	•	Connect the Feather ESP32 V2 to a USB-C power source.
+	•	The onboard charger will handle battery charging automatically.
+
+Testing:
+	1.	Disconnect USB-C and power the device using the LiPo battery.
+	2.	Ensure the OLED displays GPS data.
+	3.	Verify that lap times are being logged to the SD card.
+	4.	Test button functionality for user inputs.
 
 ⸻
+
+🏁 6. Deploy and Use
+	•	Mount the device securely on your vehicle using the 3D printed mount.
+	•	Ensure the GPS module has a clear view of the sky for accurate positioning.
+	•	Start recording lap times and analyze the data post-session.

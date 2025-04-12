@@ -36,8 +36,12 @@ Build your own GPS-based lap timer for karting or track racing using an ESP32 an
 ## 🧩 Assembly
 
 1. Wire the components using the [official wiring diagram](https://foxlap.com/wp-content/uploads/2023/12/FoxLAP.DIY-wiring-1.png)
+![image](https://github.com/user-attachments/assets/a5d44ee7-e786-4253-a10a-c4df37811aab)
+wires.
+![image](https://github.com/user-attachments/assets/70351935-bc68-4ff6-9a51-0b1fdf1f93fd)
+
 2. Download 3D printable [enclosure STL files](https://foxlap.com/wp-content/uploads/2023/12/FoxLAP.DIY-case.STL) and [mount STL](https://foxlap.com/wp-content/uploads/2023/12/FoxLAP.mount.STL)
-3. Solder, assemble, and glue per the tutorial images.
+4. Solder, assemble, and glue per the tutorial images.
 
 ---
 

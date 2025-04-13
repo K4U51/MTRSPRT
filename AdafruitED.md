@@ -1,4 +1,4 @@
-Excellent choice! Switching to the Adafruit Feather ESP32 V2 simplifies your build dramatically. This board includes built-in LiPo battery charging, 3.3V logic, and USB-C, which eliminates the need for a separate charger and voltage regulator.
+This board includes built-in LiPo battery charging, 3.3V logic, and USB-C, which eliminates the need for a separate charger and voltage regulator.
 
 ⸻
 

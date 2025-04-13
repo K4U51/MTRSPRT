@@ -219,6 +219,12 @@ A DIY GPS lap timer and data logger built using the Adafruit Feather ESP32 V2. D
 > **⚠️ License Note:** FoxLAP firmware is closed-source and may prohibit modification or redistribution. Ensure you're legally allowed to flash it.
 
 1. Install [esptool](https://github.com/espressif/esptool):
-   ```bash
+	   ```bash
    pip install esptool
 
+	Flash with the following command:
+		esptool.py --chip esp32 write_flash -z \
+		  0x1000   foxlap.DIY.bootloader.bin \
+		  0x8000   foxlap.DIY.partitions.bin \
+		  0xe000   boot_app0.bin \
+		  0x10000  foxlap.DIY.bin

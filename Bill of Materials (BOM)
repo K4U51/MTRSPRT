@@ -1,0 +1,7 @@
+Part,Value,Footprint,Quantity
+U1,ESP32-WROOM-32D,Module_ESP32-WROOM-32D,1
+U2,UBLOX_NEO-6M,Module_UBLOX_NEO-6M,1
+C17,C_100nF,C_0805,1
+C18,C_10uF,C_0805,1
+R14,R_10k,R_0805,1
+... (full BOM)

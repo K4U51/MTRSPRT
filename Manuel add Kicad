@@ -1,0 +1,105 @@
+# Power Supply
+U1 AMS1117-3.3
+  VIN -> +5V
+  VOUT -> +3.3V
+  GND -> GND
+
+U2 AMS1117-3.0
+  VIN -> +5V
+  VOUT -> +3.0V
+  GND -> GND
+
+F1 Polyfuse 500mA
+  IN -> +5V
+  OUT -> VIN (U1, U2)
+
+D1 SS14 (Schottky Diode)
+  A -> +5V_IN
+  K -> +5V (Board)
+
+# Microcontroller: STM32F103C8T6
+U3 STM32F103C8T6
+  VDD -> +3.3V
+  GND -> GND
+  PA0 -> RPM_Sensor
+  PA1 -> TEMP_Sensor
+  PA5 -> DISP_SCK
+  PA6 -> DISP_MISO
+  PA7 -> DISP_MOSI
+  PB12 -> DISP_CS
+  PB13 -> DISP_DC
+  PB14 -> DISP_RST
+  PB15 -> DISP_BL
+  PA9 -> GNSS_TX (MCU TX)
+  PA10 -> GNSS_RX (MCU RX)
+  PA11 -> USB_D-
+  PA12 -> USB_D+
+  PA13 -> SWDIO
+  PA14 -> SWCLK
+  PB0 -> BTN1
+  PB1 -> BTN2
+  PB2 -> BTN3
+  PB3 -> BTN4
+
+# Display (SPI Interface)
+J1 FPC_20_Connector (mounted rear)
+  1 -> DISP_SCK (PA5)
+  2 -> DISP_MOSI (PA7)
+  3 -> DISP_MISO (PA6)
+  4 -> DISP_CS (PB12)
+  5 -> DISP_DC (PB13)
+  6 -> DISP_RST (PB14)
+  7 -> DISP_BL (PB15)
+  8 -> GND
+  9 -> +3.3V
+  10-20 -> NC (or use for touchscreen if available)
+
+# GNSS Module (NEO-6M, via JST connector)
+J2 JST_4
+  1 -> +3.0V (from U2)
+  2 -> GND
+  3 -> GNSS_RX (MCU TX - PA9)
+  4 -> GNSS_TX (MCU RX - PA10)
+
+# USB-C Connector
+J3 USB-C
+  A4/B9 -> USB_D+
+  A5/B5 -> USB_D-
+  A1/B12 -> GND
+  A9/B4 -> +5V_IN
+
+# RPM Sensor (Hall Effect)
+J4 3-Pin Header
+  1 -> +3.3V
+  2 -> GND
+  3 -> PA0
+
+# Temperature Sensor (LM35 or similar)
+J5 3-Pin Header
+  1 -> +3.3V
+  2 -> GND
+  3 -> PA1
+
+# Tactile Buttons
+S1 Button1
+  1 -> GND
+  2 -> PB0
+
+S2 Button2
+  1 -> GND
+  2 -> PB1
+
+S3 Button3
+  1 -> GND
+  2 -> PB2
+
+S4 Button4
+  1 -> GND
+  2 -> PB3
+
+# Programming Header (SWD)
+J6 SWD_Header
+  1 -> SWDIO (PA13)
+  2 -> GND
+  3 -> SWCLK (PA14)
+  4 -> +3.3V
